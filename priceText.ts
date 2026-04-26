@@ -29,6 +29,13 @@ async function main(): Promise<void> {
     const price = parsePriceText(priceText);
 
     console.log(price);
+
+    // Print true if the price is less than the threshold.
+    if (price < Number(process.env.PRICE_THRESHOLD)) {
+      console.log(true);
+
+      // Send a message via the bot
+    }
   } finally {
     await browser.close();
   }
