@@ -1,21 +1,38 @@
-// testing grammY
-
 import { Bot } from "grammy";
-import "dotenv/config";
 
-// Create an instance of the `Bot` class and pass your bot token to it.
-const bot = new Bot(process.env.TELEGRAM_BOT_TOKEN!); // <-- put your bot token between the ""
+type SendTelegramMessageInput = {
+  botToken: string;
+  chatId: string;
+  text: string;
+  send?: (chatId: string, text: string) => Promise<void>;
+};
 
-// You can now register listeners on your bot object `bot`.
-// grammY will call the listeners when users send messages to your bot.
+async function sendTelegramMessage({
+  botToken,
+  chatId,
+  text,
+  send,
+}: SendTelegramMessageInput): Promise<void> {
+  if (botToken.trim() === "") {
+    throw new Error("Telegram bot token is required");
+  }
 
-// Handle the /start command.
-bot.command("start", (ctx) => ctx.reply("Welcome! Up and running."));
-// Handle other messages.
-bot.on("message", (ctx) => ctx.reply("Got another message!"));
+  if (chatId.trim() === "") {
+    throw new Error("Telegram chat ID is required");
+  }
 
-// Now that you specified how to handle messages, you can start your bot.
-// This will connect to the Telegram servers and wait for messages.
+  if (text.trim() === "") {
+    throw new Error("Telegram message text is required");
+  }
 
-// Start the bot.
-bot.start();
+  if (send) {
+    await send(chatId, text);
+    return;
+  }
+
+  const bot = new Bot(botToken);
+  await bot.api.sendMessage(chatId, text);
+}
+
+export { sendTelegramMessage };
+export type { SendTelegramMessageInput };
