@@ -1,7 +1,5 @@
 import { expect, test } from "@playwright/test";
 
-import { scrapePriceText } from "../scrapePriceText.js"; // typescript files will be compiled to js files
-
 test("returns the raw price text from the matching element", async ({
   page,
 }) => {

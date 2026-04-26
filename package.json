@@ -12,7 +12,8 @@
   "type": "module",
   "main": "index.js",
   "scripts": {
-    "start": "tsx index.ts"
+    "start": "tsx index.ts",
+    "scrape:price": "tsx priceText.ts"
   },
   "dependencies": {
     "dotenv": "^17.4.2",
