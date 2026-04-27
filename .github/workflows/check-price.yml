@@ -3,7 +3,7 @@ name: Check Price
 on:
   workflow_dispatch:
   schedule:
-    - cron: "30 05 * * *" # schedules the workflow to run everyday at 9am singapore time, which is 1am utc
+    - cron: "00 06 * * *" # schedules the workflow to run everyday at 9am singapore time, which is 1am utc
     # 0 1 * * * is cron format: minute hour day-of-month month day-of-week
 
 jobs:
@@ -23,7 +23,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 24
           cache: npm
 
       - name: Install dependencies
