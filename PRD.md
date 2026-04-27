@@ -312,11 +312,11 @@ Confirm the complete V1 loop works.
 
 Use this structure for V1:
 
-- check-price.ts
+- priceText.ts
 - package.json
 - package-lock.json
 - .gitignore
-- .github/workflows/check-price.yml
+- .github/workflows/priceText.yml
 - PRD.md
 
 Avoid extra folders until the single script becomes hard to read.

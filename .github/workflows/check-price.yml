@@ -2,6 +2,9 @@ name: Check Price
 
 on:
   workflow_dispatch:
+  schedule:
+    - cron: "30 05 * * *" # schedules the workflow to run everyday at 9am singapore time, which is 1am utc
+    # 0 1 * * * is cron format: minute hour day-of-month month day-of-week
 
 jobs:
   check-price:
