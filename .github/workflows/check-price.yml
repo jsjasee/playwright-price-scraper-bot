@@ -30,4 +30,4 @@ jobs:
         run: npx playwright install --with-deps chromium
 
       - name: Run price check
-        run: npx tsx priceText.ts
+        run: npx tsx src/priceText.ts
